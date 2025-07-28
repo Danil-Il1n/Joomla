@@ -31,8 +31,7 @@ jobs:
       # ======= Auto-create Git tag like v-1, v-2, etc. =======
       - name: Generate tag
         id: tag
-        run: |
-          echo "TAG_NAME=v-${{ github.run_number }}" >> $GITHUB_ENV
+        run: echo "tag_name=v-${{ github.run_number }}" >> $GITHUB_OUTPUT
 
       - name: Create GitHub Release
         id: create_release
@@ -53,3 +52,4 @@ jobs:
           asset_content_type: application/vnd.android.package-archive
         env:
           GITHUB_TOKEN: ${{ secrets.GH_PAT }}
+          
